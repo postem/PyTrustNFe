@@ -132,6 +132,8 @@ def _send(certificado, method, **kwargs):
     print('\nentrei no envio de xml')
     xml = etree.fromstring(xml_send)
     client = Client(base_url, transport=transport)
+    s = client.settings
+    print('\nsettings',s)
 
     print('\nesse e o cliente:',client)
     print('\nesse eo url',base_url)
