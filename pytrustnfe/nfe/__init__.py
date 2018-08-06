@@ -128,10 +128,13 @@ def _send(certificado, method, **kwargs):
     session.cert = (cert, key)
     session.verify = False
     transport = Transport(session=session)
-
+    
+    print('\nentrei no envio de xml')
     xml = etree.fromstring(xml_send)
     client = Client(base_url, transport=transport)
 
+    print('\nesse e o cliente:',client)
+    print('\nesse eo url',base_url)
     port = next(iter(client.wsdl.port_types))
     first_operation = [x for x in iter(
         client.wsdl.port_types[port].operations) if "Zip" not in x][0]
