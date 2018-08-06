@@ -15,7 +15,7 @@ from pytrustnfe.certificado import extract_cert_and_key_from_pfx, save_cert_key
 
 # Zeep
 from requests import Session
-from zeep import Client
+from zeep import Client, Settings
 from zeep.transports import Transport
 
 
@@ -129,7 +129,7 @@ def _send(certificado, method, **kwargs):
     session.verify = False
     transport = Transport(session=session)
     
-    print('\nentrei no envio de xml')
+    print('\nentrei no envio de xml - Com zeep settings')
     xml = etree.fromstring(xml_send)
     client = Client(base_url, transport=transport)
     s = client.settings
